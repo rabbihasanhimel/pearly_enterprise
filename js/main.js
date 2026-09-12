@@ -523,17 +523,52 @@ function initContactForm() {
 }
 
 /**
- * Navbar blur and scroll styling
+ * Navbar blur, scroll styling, and active section scroll-spy
  */
 function initScrollEffects() {
   const navbar = document.querySelector(".header-navbar");
-  if (!navbar) return;
+  const navLinks = document.querySelectorAll(".nav-link");
+  const sections = [];
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 30) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
+  // Build a list of sections that correspond to nav links
+  navLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    if (href && href.startsWith("#")) {
+      const section = document.getElementById(href.substring(1));
+      if (section) {
+        sections.push({ el: section, link: link });
+      }
     }
   });
+
+  function updateActiveLink() {
+    const scrollPos = window.scrollY + 120; // offset for sticky navbar height
+
+    let currentSection = null;
+    for (let i = sections.length - 1; i >= 0; i--) {
+      if (sections[i].el.offsetTop <= scrollPos) {
+        currentSection = sections[i];
+        break;
+      }
+    }
+
+    navLinks.forEach((link) => link.classList.remove("active"));
+    if (currentSection) {
+      currentSection.link.classList.add("active");
+    }
+  }
+
+  window.addEventListener("scroll", () => {
+    if (navbar) {
+      if (window.scrollY > 30) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
+    updateActiveLink();
+  });
+
+  // Set initial active on load
+  updateActiveLink();
 }
