@@ -1588,22 +1588,39 @@ button, input, select, textarea {
   transition: all var(--transition-fast);
 }
 
+.plus-code-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-section-alt);
+  border: 1px solid var(--border-ui);
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  font-size: 0.84rem;
+  color: var(--text-heading);
+  margin-bottom: 20px;
+}
+
+.plus-code-box i {
+  color: #ea4335;
+  font-size: 0.95rem;
+}
+
+.plus-code-val {
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
 .btn-google-maps {
-  background: #4285f4;
+  background: #1a73e8;
   color: #ffffff;
+  box-shadow: 0 4px 14px rgba(26, 115, 232, 0.35);
 }
 
 .btn-google-maps:hover {
-  background: #3367d6;
-}
-
-.btn-yandex-maps {
-  background: #fc3f1d;
-  color: #ffffff;
-}
-
-.btn-yandex-maps:hover {
-  background: #e03212;
+  background: #1557b0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(26, 115, 232, 0.45);
 }
 
 .map-embed-box {
