@@ -29,3 +29,12 @@ This website serves as the digital catalog and inquiry hub for industrial buyers
 * **Mobile / WhatsApp**: +880 1731-658448
 * **Email**: info.pearlyenterprise@gmail.com
 * **WeChat ID**: mdnurulamin1
+
+---
+
+## Updating Content & Photos
+
+To add/remove gallery photos, wire gauge sizes, or update contact info, simply edit **`data/site-data.json`**:
+* **Photos**: Add or remove entries under `"shopGallery"` or `"factoryGallery"`.
+* **Contact Details**: Update numbers, address, or WeChat IDs under `"company"`.
+* The website automatically loads from this JSON file.

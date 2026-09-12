@@ -3,81 +3,99 @@
  * Clean, lightweight vanilla JavaScript. Zero build step, blazing fast on Cloudflare Pages.
  */
 
-// British Standard Wire Gauge (BS 3737) Data: Exactly SWG 1 to SWG 34
-const wireGaugeData = [
-  { swg: "1", inches: "0.3000", mm: "7.620", category: "heavy", popular: false },
-  { swg: "2", inches: "0.2760", mm: "7.010", category: "heavy", popular: false },
-  { swg: "3", inches: "0.2520", mm: "6.401", category: "heavy", popular: false },
-  { swg: "4", inches: "0.2320", mm: "5.893", category: "heavy", popular: false },
-  { swg: "5", inches: "0.2120", mm: "5.385", category: "heavy", popular: false },
-  { swg: "6", inches: "0.1920", mm: "4.877", category: "medium", popular: true },
-  { swg: "7", inches: "0.1760", mm: "4.470", category: "medium", popular: true },
-  { swg: "8", inches: "0.1600", mm: "4.064", category: "medium", popular: true },
-  { swg: "9", inches: "0.1440", mm: "3.658", category: "medium", popular: true },
-  { swg: "10", inches: "0.1280", mm: "3.251", category: "medium", popular: true },
-  { swg: "11", inches: "0.1160", mm: "2.946", category: "medium", popular: true },
-  { swg: "12", inches: "0.1040", mm: "2.642", category: "medium", popular: true },
-  { swg: "13", inches: "0.0920", mm: "2.337", category: "medium", popular: true },
-  { swg: "14", inches: "0.0800", mm: "2.032", category: "medium", popular: true },
-  { swg: "15", inches: "0.0720", mm: "1.829", category: "medium", popular: true },
-  { swg: "16", inches: "0.0640", mm: "1.626", category: "medium", popular: true },
-  { swg: "17", inches: "0.0560", mm: "1.422", category: "medium", popular: true },
-  { swg: "18", inches: "0.0480", mm: "1.219", category: "medium", popular: true },
-  { swg: "19", inches: "0.0400", mm: "1.016", category: "fine", popular: true },
-  { swg: "20", inches: "0.0360", mm: "0.914", category: "fine", popular: true },
-  { swg: "21", inches: "0.0320", mm: "0.813", category: "fine", popular: true },
-  { swg: "22", inches: "0.0280", mm: "0.711", category: "fine", popular: true },
-  { swg: "23", inches: "0.0240", mm: "0.610", category: "fine", popular: true },
-  { swg: "24", inches: "0.0220", mm: "0.559", category: "fine", popular: true },
-  { swg: "25", inches: "0.0200", mm: "0.508", category: "fine", popular: true },
-  { swg: "26", inches: "0.0180", mm: "0.4572", category: "fine", popular: true },
-  { swg: "27", inches: "0.0164", mm: "0.4166", category: "fine", popular: true },
-  { swg: "28", inches: "0.0148", mm: "0.3759", category: "fine", popular: true },
-  { swg: "29", inches: "0.0136", mm: "0.3454", category: "fine", popular: false },
-  { swg: "30", inches: "0.0124", mm: "0.3150", category: "fine", popular: false },
-  { swg: "31", inches: "0.0116", mm: "0.2946", category: "fine", popular: false },
-  { swg: "32", inches: "0.0108", mm: "0.2743", category: "fine", popular: false },
-  { swg: "33", inches: "0.0100", mm: "0.2540", category: "fine", popular: false },
-  { swg: "34", inches: "0.0092", mm: "0.2337", category: "fine", popular: false }
-];
+/**
+ * Dynamic Data Architecture
+ * Loads dynamically from data/site-data.json with seamless bundled fallback
+ */
+const defaultSiteData = {
+  shopGallery: [
+    {
+      src: "images/shop/shop-storefront.jpg",
+      title: "Main Storefront & Signboard",
+      subtitle: "233/E Nawabpur Mansion, Nawabpur Road, Dhaka",
+      caption: "Pearly Enterprise (পার্লি এন্টারপ্রাইজ) storefront at Nawabpur Mansion, Dhaka"
+    },
+    {
+      src: "images/shop/shop-office-3.jpg",
+      title: "Direct Client Consultation Area",
+      subtitle: "Welcoming wholesale buyers & small entrepreneurs",
+      caption: "Order processing desk welcoming walk-in clients and business partners"
+    }
+  ],
+  factoryGallery: [
+    {
+      src: "images/factory/china-factory-1.jpg",
+      title: "Continuous Automated Wire Coiling Facility",
+      subtitle: "Partner Supplier Mills in China",
+      caption: "Partner Supplier Factory in China - Vertical continuous spooling and drawing line"
+    },
+    {
+      src: "images/factory/china-factory-2.jpg",
+      title: "Heavy-Duty Continuous Wire Drawing Machines",
+      subtitle: "Precision Gauge Calibration & Annealing",
+      caption: "Partner Supplier Factory in China - High-speed drawing block lines"
+    }
+  ],
+  wireGauges: [
+    { swg: "1", inches: "0.3000", mm: "7.620", category: "heavy", popular: false },
+    { swg: "2", inches: "0.2760", mm: "7.010", category: "heavy", popular: false },
+    { swg: "3", inches: "0.2520", mm: "6.401", category: "heavy", popular: false },
+    { swg: "4", inches: "0.2320", mm: "5.893", category: "heavy", popular: false },
+    { swg: "5", inches: "0.2120", mm: "5.385", category: "heavy", popular: false },
+    { swg: "6", inches: "0.1920", mm: "4.877", category: "medium", popular: true },
+    { swg: "7", inches: "0.1760", mm: "4.470", category: "medium", popular: true },
+    { swg: "8", inches: "0.1600", mm: "4.064", category: "medium", popular: true },
+    { swg: "9", inches: "0.1440", mm: "3.658", category: "medium", popular: true },
+    { swg: "10", inches: "0.1280", mm: "3.251", category: "medium", popular: true },
+    { swg: "11", inches: "0.1160", mm: "2.946", category: "medium", popular: true },
+    { swg: "12", inches: "0.1040", mm: "2.642", category: "medium", popular: true },
+    { swg: "13", inches: "0.0920", mm: "2.337", category: "medium", popular: true },
+    { swg: "14", inches: "0.0800", mm: "2.032", category: "medium", popular: true },
+    { swg: "15", inches: "0.0720", mm: "1.829", category: "medium", popular: true },
+    { swg: "16", inches: "0.0640", mm: "1.626", category: "medium", popular: true },
+    { swg: "17", inches: "0.0560", mm: "1.422", category: "medium", popular: true },
+    { swg: "18", inches: "0.0480", mm: "1.219", category: "medium", popular: true },
+    { swg: "19", inches: "0.0400", mm: "1.016", category: "fine", popular: true },
+    { swg: "20", inches: "0.0360", mm: "0.914", category: "fine", popular: true },
+    { swg: "21", inches: "0.0320", mm: "0.813", category: "fine", popular: true },
+    { swg: "22", inches: "0.0280", mm: "0.711", category: "fine", popular: true },
+    { swg: "23", inches: "0.0240", mm: "0.610", category: "fine", popular: true },
+    { swg: "24", inches: "0.0220", mm: "0.559", category: "fine", popular: true },
+    { swg: "25", inches: "0.0200", mm: "0.508", category: "fine", popular: true },
+    { swg: "26", inches: "0.0180", mm: "0.4572", category: "fine", popular: true },
+    { swg: "27", inches: "0.0164", mm: "0.4166", category: "fine", popular: true },
+    { swg: "28", inches: "0.0148", mm: "0.3759", category: "fine", popular: true },
+    { swg: "29", inches: "0.0136", mm: "0.3454", category: "fine", popular: false },
+    { swg: "30", inches: "0.0124", mm: "0.3150", category: "fine", popular: false },
+    { swg: "31", inches: "0.0116", mm: "0.2946", category: "fine", popular: false },
+    { swg: "32", inches: "0.0108", mm: "0.2743", category: "fine", popular: false },
+    { swg: "33", inches: "0.0100", mm: "0.2540", category: "fine", popular: false },
+    { swg: "34", inches: "0.0092", mm: "0.2337", category: "fine", popular: false }
+  ]
+};
 
-// Dhaka Shop & Warehouse Photos
-const shopGalleryData = [
-  {
-    src: "images/shop/shop-storefront.jpg",
-    title: "Main Storefront & Signboard",
-    subtitle: "233/E Nawabpur Mansion, Nawabpur Road, Dhaka",
-    caption: "Pearly Enterprise (পার্লি এন্টারপ্রাইজ) storefront at Nawabpur Mansion, Dhaka"
-  },
-  {
-    src: "images/shop/shop-office-3.jpg",
-    title: "Direct Client Consultation Area",
-    subtitle: "Welcoming wholesale buyers & small entrepreneurs",
-    caption: "Order processing desk welcoming walk-in clients and business partners"
+let activeSiteData = defaultSiteData;
+
+async function fetchSiteData() {
+  try {
+    const res = await fetch("data/site-data.json?v=" + Date.now());
+    if (res.ok) {
+      const data = await res.json();
+      activeSiteData = { ...defaultSiteData, ...data };
+    }
+  } catch (err) {
+    // Offline / local file preview fallback
+    activeSiteData = defaultSiteData;
   }
-];
+  window.pearlyData = activeSiteData;
+}
 
-// China Partner Mills Photos
-const factoryGalleryData = [
-  {
-    src: "images/factory/china-factory-1.jpg",
-    title: "Continuous Automated Wire Coiling Facility",
-    subtitle: "Partner Supplier Mills in China",
-    caption: "Partner Supplier Factory in China - Vertical continuous spooling and drawing line"
-  },
-  {
-    src: "images/factory/china-factory-2.jpg",
-    title: "High-Capacity Heavy Drawing Line",
-    subtitle: "Partner Supplier Mills in China",
-    caption: "Partner Supplier Factory in China - Multi-stand continuous wire drawing machinery"
-  }
-];
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   initThemeSwitcher();
-  initWireGaugeTable();
-  init3DCarousel("shop", shopGalleryData);
-  init3DCarousel("factory", factoryGalleryData);
+  await fetchSiteData();
+  initWireGaugeTable(activeSiteData.wireGauges || defaultSiteData.wireGauges);
+  init3DCarousel("shop", activeSiteData.shopGallery || defaultSiteData.shopGallery);
+  init3DCarousel("factory", activeSiteData.factoryGallery || defaultSiteData.factoryGallery);
   initMobileMenu();
   initLightbox();
   initWeChatCopy();
@@ -250,7 +268,7 @@ function init3DCarousel(prefix, items) {
  * WIRE GAUGE SPECIFICATION TABLE SEARCH & FILTER (SWG 1 to SWG 34)
  * ==========================================================================
  */
-function initWireGaugeTable() {
+function initWireGaugeTable(customGauges) {
   const tableBody = document.getElementById("gaugeTableBody");
   const searchInput = document.getElementById("gaugeSearchInput");
   const categoryButtons = document.querySelectorAll(".gauge-tab-btn");
@@ -258,11 +276,12 @@ function initWireGaugeTable() {
 
   if (!tableBody) return;
 
+  const gauges = customGauges || activeSiteData.wireGauges || defaultSiteData.wireGauges;
   let currentCategory = "all";
   let currentSearch = "";
 
   function renderTable() {
-    const filtered = wireGaugeData.filter(item => {
+    const filtered = gauges.filter(item => {
       let matchCat = true;
       if (currentCategory === "popular") matchCat = item.popular;
       else if (currentCategory === "heavy") matchCat = item.category === "heavy";

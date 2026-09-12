@@ -1,0 +1,345 @@
+{
+  "company": {
+    "name": "PEARLY ENTERPRISE",
+    "tagline": "Spring Steel Wire Importer",
+    "bengaliName": "পার্লি এন্টারপ্রাইজ",
+    "bengaliTagline": "স্প্রিং স্টিল ওয়্যার এর নির্ভরযোগ্য আমদানিকারক ও পাইকারী বিক্রেতা",
+    "proprietor": "MD. Nurul Amin",
+    "address": "233/E, Nawabpur Mansion, Nawabpur Road, Dhaka-1100, Bangladesh",
+    "addressNote": "Dhaka's renowned industrial machinery and raw material wholesale market",
+    "phone": "+880 2-41053025",
+    "phoneRaw": "+880241053025",
+    "mobile": "+880 1731-658448",
+    "mobileRaw": "+8801731658448",
+    "whatsappNumber": "8801731658448",
+    "email": "info.pearlyenterprise@gmail.com",
+    "emailAlt": "mnurulamin133@gmail.com",
+    "plusCode": "PC86+MF Dhaka",
+    "googleMapsUrl": "https://maps.app.goo.gl/phVCcQZM2D17gdra6",
+    "wechat": [
+      {
+        "id": "mdnurulamin1",
+        "name": "MD. Nurul Amin (Owner)"
+      },
+      {
+        "id": "rabbihasanhimel",
+        "name": "Rabbi Hasan Himel"
+      }
+    ]
+  },
+  "shopGallery": [
+    {
+      "src": "images/shop/shop-storefront.jpg",
+      "title": "Main Storefront & Signboard",
+      "subtitle": "233/E Nawabpur Mansion, Nawabpur Road, Dhaka",
+      "caption": "Pearly Enterprise (পার্লি এন্টারপ্রাইজ) storefront at Nawabpur Mansion, Dhaka"
+    },
+    {
+      "src": "images/shop/shop-office-3.jpg",
+      "title": "Direct Client Consultation Area",
+      "subtitle": "Welcoming wholesale buyers & small entrepreneurs",
+      "caption": "Order processing desk welcoming walk-in clients and business partners"
+    }
+  ],
+  "factoryGallery": [
+    {
+      "src": "images/factory/china-factory-1.jpg",
+      "title": "Continuous Automated Wire Coiling Facility",
+      "subtitle": "Partner Supplier Mills in China",
+      "caption": "Partner Supplier Factory in China - Vertical continuous spooling and drawing line"
+    },
+    {
+      "src": "images/factory/china-factory-2.jpg",
+      "title": "Heavy-Duty Continuous Wire Drawing Machines",
+      "subtitle": "Precision Gauge Calibration & Annealing",
+      "caption": "Partner Supplier Factory in China - High-speed drawing block lines"
+    }
+  ],
+  "wireGauges": [
+    {
+      "swg": "1",
+      "inches": "0.3000",
+      "mm": "7.620",
+      "category": "heavy",
+      "popular": false
+    },
+    {
+      "swg": "2",
+      "inches": "0.2760",
+      "mm": "7.010",
+      "category": "heavy",
+      "popular": false
+    },
+    {
+      "swg": "3",
+      "inches": "0.2520",
+      "mm": "6.401",
+      "category": "heavy",
+      "popular": false
+    },
+    {
+      "swg": "4",
+      "inches": "0.2320",
+      "mm": "5.893",
+      "category": "heavy",
+      "popular": false
+    },
+    {
+      "swg": "5",
+      "inches": "0.2120",
+      "mm": "5.385",
+      "category": "heavy",
+      "popular": false
+    },
+    {
+      "swg": "6",
+      "inches": "0.1920",
+      "mm": "4.877",
+      "category": "medium",
+      "popular": true
+    },
+    {
+      "swg": "7",
+      "inches": "0.1760",
+      "mm": "4.470",
+      "category": "medium",
+      "popular": true
+    },
+    {
+      "swg": "8",
+      "inches": "0.1600",
+      "mm": "4.064",
+      "category": "medium",
+      "popular": true
+    },
+    {
+      "swg": "9",
+      "inches": "0.1440",
+      "mm": "3.658",
+      "category": "medium",
+      "popular": true
+    },
+    {
+      "swg": "10",
+      "inches": "0.1280",
+      "mm": "3.251",
+      "category": "medium",
+      "popular": true
+    },
+    {
+      "swg": "11",
+      "inches": "0.1160",
+      "mm": "2.946",
+      "category": "medium",
+      "popular": true
+    },
+    {
+      "swg": "12",
+      "inches": "0.1040",
+      "mm": "2.642",
+      "category": "medium",
+      "popular": true
+    },
+    {
+      "swg": "13",
+      "inches": "0.0920",
+      "mm": "2.337",
+      "category": "medium",
+      "popular": true
+    },
+    {
+      "swg": "14",
+      "inches": "0.0800",
+      "mm": "2.032",
+      "category": "medium",
+      "popular": true
+    },
+    {
+      "swg": "15",
+      "inches": "0.0720",
+      "mm": "1.829",
+      "category": "medium",
+      "popular": true
+    },
+    {
+      "swg": "16",
+      "inches": "0.0640",
+      "mm": "1.626",
+      "category": "medium",
+      "popular": true
+    },
+    {
+      "swg": "17",
+      "inches": "0.0560",
+      "mm": "1.422",
+      "category": "medium",
+      "popular": true
+    },
+    {
+      "swg": "18",
+      "inches": "0.0480",
+      "mm": "1.219",
+      "category": "medium",
+      "popular": true
+    },
+    {
+      "swg": "19",
+      "inches": "0.0400",
+      "mm": "1.016",
+      "category": "fine",
+      "popular": true
+    },
+    {
+      "swg": "20",
+      "inches": "0.0360",
+      "mm": "0.914",
+      "category": "fine",
+      "popular": true
+    },
+    {
+      "swg": "21",
+      "inches": "0.0320",
+      "mm": "0.813",
+      "category": "fine",
+      "popular": true
+    },
+    {
+      "swg": "22",
+      "inches": "0.0280",
+      "mm": "0.711",
+      "category": "fine",
+      "popular": true
+    },
+    {
+      "swg": "23",
+      "inches": "0.0240",
+      "mm": "0.610",
+      "category": "fine",
+      "popular": true
+    },
+    {
+      "swg": "24",
+      "inches": "0.0220",
+      "mm": "0.559",
+      "category": "fine",
+      "popular": true
+    },
+    {
+      "swg": "25",
+      "inches": "0.0200",
+      "mm": "0.508",
+      "category": "fine",
+      "popular": true
+    },
+    {
+      "swg": "26",
+      "inches": "0.0180",
+      "mm": "0.4572",
+      "category": "fine",
+      "popular": true
+    },
+    {
+      "swg": "27",
+      "inches": "0.0164",
+      "mm": "0.4166",
+      "category": "fine",
+      "popular": true
+    },
+    {
+      "swg": "28",
+      "inches": "0.0148",
+      "mm": "0.3759",
+      "category": "fine",
+      "popular": true
+    },
+    {
+      "swg": "29",
+      "inches": "0.0136",
+      "mm": "0.3454",
+      "category": "fine",
+      "popular": false
+    },
+    {
+      "swg": "30",
+      "inches": "0.0124",
+      "mm": "0.3150",
+      "category": "fine",
+      "popular": false
+    },
+    {
+      "swg": "31",
+      "inches": "0.0116",
+      "mm": "0.2946",
+      "category": "fine",
+      "popular": false
+    },
+    {
+      "swg": "32",
+      "inches": "0.0108",
+      "mm": "0.2743",
+      "category": "fine",
+      "popular": false
+    },
+    {
+      "swg": "33",
+      "inches": "0.0100",
+      "mm": "0.2540",
+      "category": "fine",
+      "popular": false
+    },
+    {
+      "swg": "34",
+      "inches": "0.0092",
+      "mm": "0.2337",
+      "category": "fine",
+      "popular": false
+    }
+  ],
+  "products": [
+    {
+      "id": "carbon-steel",
+      "title": "High-Carbon Spring Steel Wire",
+      "origin": "China",
+      "originIcon": "fas fa-globe-asia",
+      "badge": "Main Item",
+      "image": "images/products/carbon-steel-wire-1.jpg",
+      "description": "Our flagship product, available in over 30+ gauge sizes. Manufactured in premier Chinese mills with precision cold-drawing and heat treatment.",
+      "specs": [
+        "Sizes: SWG 1 to SWG 34 (0.23mm to 7.62mm)",
+        "Carbon Content: High carbon formulation for maximum tensile strength",
+        "Packaging: Coils wrapped in protective plastic / burlap",
+        "Application: Mattress springs, garage door springs, compression springs"
+      ]
+    },
+    {
+      "id": "stainless-steel",
+      "title": "Stainless Steel Spring Wire",
+      "origin": "India",
+      "originIcon": "fas fa-globe-asia",
+      "badge": "",
+      "image": "images/products/stainless-steel-wire.jpg",
+      "description": "High-grade stainless steel wire imported directly from India. Delivers exceptional corrosion resistance, uniform temper, and bright, clean surface finishes.",
+      "specs": [
+        "Material: Premium Stainless Steel Spring Grade",
+        "Corrosion Resistance: Ideal for humid, chemical, or outdoor environments",
+        "Elasticity: Precision rebound and fatigue endurance",
+        "Application: Precision machinery, marine springs, valves, food equipment"
+      ]
+    },
+    {
+      "id": "galvanized-indent",
+      "title": "Galvanized & Bulk Indents",
+      "origin": "Custom Import Orders",
+      "originIcon": "fas fa-box-open",
+      "badge": "",
+      "image": "images/products/galvanized-spring-wire.jpg",
+      "description": "Galvanized zinc-coated spring wire for enhanced rust prevention, plus custom indent container orders tailored to your factory's exact wire specifications.",
+      "specs": [
+        "Zinc Coating: Uniform electro-galvanized or hot-dip options",
+        "Indent Capacity: Container-load import orders handled seamlessly",
+        "Custom Diameters: Any metric or imperial gauge upon request",
+        "Application: Heavy industrial coils, agricultural implements, wire forms"
+      ]
+    }
+  ]
+}
