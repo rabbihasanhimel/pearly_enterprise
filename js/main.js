@@ -50,18 +50,6 @@ const shopGalleryData = [
     caption: "Pearly Enterprise (পার্লি এন্টারপ্রাইজ) storefront at Nawabpur Mansion, Dhaka"
   },
   {
-    src: "images/shop/shop-office-1.jpg",
-    title: "Customer Sales Desk & Warehouse Stock",
-    subtitle: "Ready inventory in Dhaka for pickup & dispatch",
-    caption: "Sales desk with ready stock coils of high-carbon spring steel wire"
-  },
-  {
-    src: "images/shop/shop-office-2.jpg",
-    title: "Warehouse Racks & Coils",
-    subtitle: "Organized systematically according to standard SWG sizes",
-    caption: "Wire coils systematically organized for quick dispatch and client inspection"
-  },
-  {
     src: "images/shop/shop-office-3.jpg",
     title: "Direct Client Consultation Area",
     subtitle: "Welcoming wholesale buyers & small entrepreneurs",
