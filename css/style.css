@@ -776,8 +776,7 @@ button, input, select, textarea {
   height: auto;
   display: block;
   cursor: pointer;
-  aspect-ratio: 1050 / 600;
-  object-fit: cover;
+  border-radius: calc(var(--radius-md) - 2px);
 }
 
 .card-label-badge {
