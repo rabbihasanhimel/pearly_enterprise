@@ -39,6 +39,30 @@
       "title": "Direct Client Consultation Area",
       "subtitle": "Welcoming wholesale buyers & small entrepreneurs",
       "caption": "Order processing desk welcoming walk-in clients and business partners"
+    },
+    {
+      "src": "images/shop/warehouse-carbon-coils.jpg",
+      "title": "High-Carbon Wire Coil Storage",
+      "subtitle": "Stacked & organized by SWG size for quick dispatch",
+      "caption": "Heavy-gauge high-carbon spring steel wire coils wrapped and stacked in the Nawabpur warehouse"
+    },
+    {
+      "src": "images/shop/warehouse-stainless-bansal.jpg",
+      "title": "Stainless Steel Wire Stock (India Import)",
+      "subtitle": "Bansal branded coils ready for wholesale buyers",
+      "caption": "Imported stainless steel spring wire coils from India, sorted by gauge"
+    },
+    {
+      "src": "images/shop/warehouse-color-coils.jpg",
+      "title": "Bulk Inventory — Color-Coded by Gauge",
+      "subtitle": "Green, blue & yellow wrapped coils organized for easy identification",
+      "caption": "Color-coded spring wire coils in the Pearly Enterprise warehouse, Nawabpur Road"
+    },
+    {
+      "src": "images/shop/warehouse-mixed-stock.jpg",
+      "title": "Ready Stock — Multiple Wire Grades",
+      "subtitle": "Immediate availability for wholesale pickup & dispatch",
+      "caption": "Mixed grade spring steel wire coils packed and ready for customer collection"
     }
   ],
   "factoryGallery": [
@@ -53,6 +77,12 @@
       "title": "Heavy-Duty Continuous Wire Drawing Machines",
       "subtitle": "Precision Gauge Calibration & Annealing",
       "caption": "Partner Supplier Factory in China - High-speed drawing block lines"
+    },
+    {
+      "src": "images/factory/factory-stainless-drawing.jpg",
+      "title": "Precision Stainless Steel Drawing & Spooling",
+      "subtitle": "Partner Supplier Mills in India",
+      "caption": "Partner Supplier Mill in India - High-speed stainless steel spring wire drawing and carrier take-up line"
     }
   ],
   "wireGauges": [
