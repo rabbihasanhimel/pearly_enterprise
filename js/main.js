@@ -11,6 +11,7 @@ const defaultSiteData = {
   visitorCounter: {
     enabled: true,
     baseOffset: 1280,
+    cooldownMinutes: 2,
     label: "Website Visits:"
   },
   shopGallery: [
@@ -639,59 +640,65 @@ function initVisitorCounter(config = {}) {
   }
 
   const baseOffset = typeof config.baseOffset === "number" ? config.baseOffset : 1280;
+  const cooldownMinutes = typeof config.cooldownMinutes === "number" ? config.cooldownMinutes : 2;
+  const cooldownMs = cooldownMinutes * 60 * 1000;
   const storageKey = "pearly_site_visits";
-  const sessionKey = "pearly_session_active";
+  const lastVisitKey = "pearly_last_visit_time";
 
-  // 1. Check if new session visit or returning in same session
+  // 1. Check if 2 minutes have elapsed since the last recorded visit
+  const now = Date.now();
+  const lastVisit = parseInt(localStorage.getItem(lastVisitKey), 10) || 0;
   let localVisits = parseInt(localStorage.getItem(storageKey), 10) || 0;
-  if (!sessionStorage.getItem(sessionKey)) {
+  const isNewVisit = (now - lastVisit > cooldownMs);
+
+  if (isNewVisit) {
     localVisits += 1;
-    localStorage.setItem(storageKey, localVisits);
-    try {
-      sessionStorage.setItem(sessionKey, "1");
-    } catch (e) {}
+    localStorage.setItem(storageKey, localVisits.toString());
+    localStorage.setItem(lastVisitKey, now.toString());
   }
 
-  // Display initial local count immediately
+  // Display initial count immediately
   let initialCount = baseOffset + Math.max(localVisits, 1);
   renderCount(initialCount, false);
 
-  // 2. Query live global count via JSONP
-  const cbName = "pearlyVisitorCb_" + Math.floor(Math.random() * 1000000);
+  // 2. Query live global count via JSONP (only sync when new visit or first run)
+  if (isNewVisit || localVisits === 1) {
+    const cbName = "pearlyVisitorCb_" + Math.floor(Math.random() * 1000000);
 
-  window[cbName] = function(data) {
-    try {
-      if (data && (data.site_pv || data.site_uv || data.page_pv)) {
-        const liveHits = data.site_pv || data.page_pv || 1;
-        const total = baseOffset + liveHits;
-        renderCount(total, true);
-        localStorage.setItem(storageKey, liveHits);
+    window[cbName] = function(data) {
+      try {
+        if (data && (data.site_pv || data.site_uv || data.page_pv)) {
+          const liveHits = data.site_pv || data.page_pv || 1;
+          const total = baseOffset + liveHits;
+          renderCount(total, true);
+          localStorage.setItem(storageKey, liveHits.toString());
+        }
+      } catch (e) {
+        // Keep local count on any parsing issue
+      } finally {
+        cleanup();
       }
-    } catch (e) {
-      // Keep local count on any parsing issue
-    } finally {
-      cleanup();
-    }
-  };
+    };
 
-  const script = document.createElement("script");
-  script.src = `https://busuanzi.ibruce.info/busuanzi?jsonpCallback=${cbName}`;
-  script.async = true;
-  script.onerror = cleanup;
+    const script = document.createElement("script");
+    script.src = `https://busuanzi.ibruce.info/busuanzi?jsonpCallback=${cbName}`;
+    script.async = true;
+    script.onerror = cleanup;
 
-  const timeoutId = setTimeout(cleanup, 5000);
+    const timeoutId = setTimeout(cleanup, 5000);
 
-  function cleanup() {
-    clearTimeout(timeoutId);
-    if (window[cbName]) {
-      delete window[cbName];
+    function cleanup() {
+      clearTimeout(timeoutId);
+      if (window[cbName]) {
+        delete window[cbName];
+      }
+      if (script && script.parentNode) {
+        script.remove();
+      }
     }
-    if (script && script.parentNode) {
-      script.remove();
-    }
+
+    document.head.appendChild(script);
   }
-
-  document.head.appendChild(script);
 
   function renderCount(targetNum, animate) {
     const formatted = Number(targetNum).toLocaleString();

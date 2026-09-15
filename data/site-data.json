@@ -30,6 +30,7 @@
   "visitorCounter": {
     "enabled": true,
     "baseOffset": 1280,
+    "cooldownMinutes": 2,
     "label": "Website Visits:"
   },
   "shopGallery": [
