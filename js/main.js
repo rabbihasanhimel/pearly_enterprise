@@ -8,6 +8,11 @@
  * Loads dynamically from data/site-data.json with seamless bundled fallback
  */
 const defaultSiteData = {
+  visitorCounter: {
+    enabled: true,
+    baseOffset: 1280,
+    label: "Website Visits:"
+  },
   shopGallery: [
     {
       src: "images/shop/shop-storefront.jpg",
@@ -126,6 +131,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initWireGaugeTable(activeSiteData.wireGauges || defaultSiteData.wireGauges);
   init3DCarousel("shop", activeSiteData.shopGallery || defaultSiteData.shopGallery);
   init3DCarousel("factory", activeSiteData.factoryGallery || defaultSiteData.factoryGallery);
+  initVisitorCounter(activeSiteData.visitorCounter || defaultSiteData.visitorCounter);
   initMobileMenu();
   initLightbox();
   initWeChatCopy();
@@ -608,4 +614,107 @@ function initScrollEffects() {
 
   // Set initial active on load
   updateActiveLink();
+}
+
+/**
+ * ==========================================================================
+ * WEBSITE VISITOR COUNTER
+ * Dynamic real-time visitor counter with persistent local storage,
+ * privacy-friendly live network sync, and configurable baseline in site-data.json
+ * ==========================================================================
+ */
+function initVisitorCounter(config = {}) {
+  if (config.enabled === false) {
+    const counterBox = document.getElementById("visitorCounter");
+    if (counterBox) counterBox.style.display = "none";
+    return;
+  }
+
+  const counterEl = document.getElementById("visitorCountVal");
+  const labelEl = document.getElementById("visitorCounterLabel");
+  if (!counterEl) return;
+
+  if (labelEl && config.label) {
+    labelEl.textContent = config.label;
+  }
+
+  const baseOffset = typeof config.baseOffset === "number" ? config.baseOffset : 1280;
+  const storageKey = "pearly_site_visits";
+  const sessionKey = "pearly_session_active";
+
+  // 1. Check if new session visit or returning in same session
+  let localVisits = parseInt(localStorage.getItem(storageKey), 10) || 0;
+  if (!sessionStorage.getItem(sessionKey)) {
+    localVisits += 1;
+    localStorage.setItem(storageKey, localVisits);
+    try {
+      sessionStorage.setItem(sessionKey, "1");
+    } catch (e) {}
+  }
+
+  // Display initial local count immediately
+  let initialCount = baseOffset + Math.max(localVisits, 1);
+  renderCount(initialCount, false);
+
+  // 2. Query live global count via JSONP
+  const cbName = "pearlyVisitorCb_" + Math.floor(Math.random() * 1000000);
+
+  window[cbName] = function(data) {
+    try {
+      if (data && (data.site_pv || data.site_uv || data.page_pv)) {
+        const liveHits = data.site_pv || data.page_pv || 1;
+        const total = baseOffset + liveHits;
+        renderCount(total, true);
+        localStorage.setItem(storageKey, liveHits);
+      }
+    } catch (e) {
+      // Keep local count on any parsing issue
+    } finally {
+      cleanup();
+    }
+  };
+
+  const script = document.createElement("script");
+  script.src = `https://busuanzi.ibruce.info/busuanzi?jsonpCallback=${cbName}`;
+  script.async = true;
+  script.onerror = cleanup;
+
+  const timeoutId = setTimeout(cleanup, 5000);
+
+  function cleanup() {
+    clearTimeout(timeoutId);
+    if (window[cbName]) {
+      delete window[cbName];
+    }
+    if (script && script.parentNode) {
+      script.remove();
+    }
+  }
+
+  document.head.appendChild(script);
+
+  function renderCount(targetNum, animate) {
+    const formatted = Number(targetNum).toLocaleString();
+    if (!animate || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      counterEl.textContent = formatted;
+      return;
+    }
+
+    const start = Math.max(0, targetNum - 25);
+    const duration = 900;
+    const startTime = performance.now();
+
+    function step(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = Math.floor(start + (targetNum - start) * ease);
+      counterEl.textContent = current.toLocaleString();
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        counterEl.textContent = formatted;
+      }
+    }
+    requestAnimationFrame(step);
+  }
 }

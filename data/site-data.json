@@ -27,6 +27,11 @@
       }
     ]
   },
+  "visitorCounter": {
+    "enabled": true,
+    "baseOffset": 1280,
+    "label": "Website Visits:"
+  },
   "shopGallery": [
     {
       "src": "images/shop/shop-storefront.jpg",
