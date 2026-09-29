@@ -11,7 +11,7 @@ const defaultSiteData = {
   visitorCounter: {
     enabled: true,
     baseOffset: 1280,
-    cooldownMinutes: 2,
+    cooldownSeconds: 2,
     label: "Website Visits:"
   },
   shopGallery: [
@@ -640,12 +640,14 @@ function initVisitorCounter(config = {}) {
   }
 
   const baseOffset = typeof config.baseOffset === "number" ? config.baseOffset : 1280;
-  const cooldownMinutes = typeof config.cooldownMinutes === "number" ? config.cooldownMinutes : 2;
-  const cooldownMs = cooldownMinutes * 60 * 1000;
+  const cooldownSeconds = typeof config.cooldownSeconds === "number" 
+    ? config.cooldownSeconds 
+    : (typeof config.cooldownMinutes === "number" ? config.cooldownMinutes * 60 : 2);
+  const cooldownMs = cooldownSeconds * 1000;
   const storageKey = "pearly_site_visits";
   const lastVisitKey = "pearly_last_visit_time";
 
-  // 1. Check if 2 minutes have elapsed since the last recorded visit
+  // 1. Check if 2 seconds have elapsed since the last recorded visit
   const now = Date.now();
   const lastVisit = parseInt(localStorage.getItem(lastVisitKey), 10) || 0;
   let localVisits = parseInt(localStorage.getItem(storageKey), 10) || 0;
