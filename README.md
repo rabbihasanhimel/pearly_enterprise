@@ -26,9 +26,9 @@ This website serves as the digital catalog and inquiry hub for industrial buyers
 * **Showroom & Office**: 233/E, Nawabpur Mansion (1st Floor), Nawabpur Road, Dhaka-1100, Bangladesh
 * **Proprietor**: MD. Nurul Amin
 * **Telephone**: +880 2-41053025
-* **Mobile / WhatsApp**: +880 1731-658448
+* **Mobile / WhatsApp**: +880 1731-658448 (MD. Nurul Amin) / +880 1875-500437 (Rabbi Hasan Himel)
 * **Email**: info.pearlyenterprise@gmail.com
-* **WeChat ID**: mdnurulamin1
+* **WeChat ID**: mdnurulamin1 / @rabbihasanhimel
 
 ---
 

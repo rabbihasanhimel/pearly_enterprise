@@ -12,10 +12,34 @@
     "mobile": "+880 1731-658448",
     "mobileRaw": "+8801731658448",
     "whatsappNumber": "8801731658448",
+    "mobileSecondary": "+880 1875-500437",
+    "mobileSecondaryRaw": "+8801875500437",
+    "whatsappSecondary": "8801875500437",
     "email": "info.pearlyenterprise@gmail.com",
     "emailAlt": "mnurulamin133@gmail.com",
     "plusCode": "PC86+MF Dhaka",
     "googleMapsUrl": "https://maps.app.goo.gl/phVCcQZM2D17gdra6",
+    "contacts": [
+      {
+        "name": "MD. Nurul Amin",
+        "role": "Owner & Proprietor",
+        "phone": "+880 2-41053025",
+        "mobile": "+880 1731-658448",
+        "whatsapp": "+880 1731-658448",
+        "whatsappRaw": "8801731658448",
+        "wechat": "mdnurulamin1"
+      },
+      {
+        "name": "Rabbi Hasan Himel",
+        "role": "Sales & International Trade",
+        "mobile": "+880 1875-500437",
+        "mobileRaw": "+8801875500437",
+        "whatsapp": "+880 1875-500437",
+        "whatsappRaw": "8801875500437",
+        "wechat": "@rabbihasanhimel",
+        "wechatId": "rabbihasanhimel"
+      }
+    ],
     "wechat": [
       {
         "id": "mdnurulamin1",
@@ -23,7 +47,9 @@
       },
       {
         "id": "rabbihasanhimel",
-        "name": "Rabbi Hasan Himel"
+        "handle": "@rabbihasanhimel",
+        "name": "Rabbi Hasan Himel",
+        "whatsapp": "+880 1875-500437"
       }
     ]
   },
